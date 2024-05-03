@@ -1,0 +1,32 @@
+import dht
+import machine
+import time
+
+# Definir o número do pino GPIO conectado ao sensor DHT11
+DHT_PIN = 4  # Altere para o pino GPIO que você está usando
+LED_PIN = 2  # Altere para o pino GPIO do LED
+
+# Configurar o sensor DHT11
+dht_sensor = dht.DHT11(machine.Pin(DHT_PIN))
+# Configurar o LED
+led = machine.Pin(LED_PIN, machine.Pin.OUT)
+
+# Função para ler e imprimir a temperatura e umidade do sensor DHT11 e piscar o LED
+def read_temperature_humidity_and_blink_led():
+    dht_sensor.measure()
+    temp_c = dht_sensor.temperature()
+    humidity = dht_sensor.humidity()
+    print("Temperatura: {}°C, Umidade: {}%".format(temp_c, humidity))
+    # Piscar o LED
+    led.on()
+    time.sleep(0.1)  # Aguardar um curto período de tempo
+    led.off()
+
+# Loop infinito para ler a temperatura, umidade e piscar o LED a cada 10 segundos
+while True:
+    try:
+        read_temperature_humidity_and_blink_led()
+    except Exception as e:
+        print("Erro:", e)
+    # Aguardar 10 segundos antes de ler novamente
+    time.sleep(10)
