@@ -28,3 +28,8 @@ Substitua sua_chave_api_do_thingspeak pela chave de API do seu canal no ThingSpe
 Faça o upload do código para o ESP32.
 Acompanhe a saída serial para verificar a conexão Wi-Fi e as leituras de temperatura e umidade.
 Verifique os dados enviados no painel do ThingSpeak.
+
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
